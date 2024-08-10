@@ -97,44 +97,37 @@ export const groupAirportsByDepartmentsAndCities = async () => {
 
 export const groupAirportsByRegionAndDepartmentsAndCitiesAndType = async () => {
     try {
-
         const airports = await getAirports();
-        const groupedData = {"region" : {}};
+        const groupedData = { "region": {} };
 
         for (const airport of airports) {
             const departmentName = airport.department.name;
             const cityName = airport.city.name;
             const regionId = airport.department.regionId;
             const regionName = await getRegionById(regionId);
+            const airportType = airport.type; 
 
             if (!groupedData["region"][regionName]) {
-                groupedData["region"][regionName] = {
-                    "department" : {}
-                    
-                }
-            }
-            else{
-                groupedData["region"][regionName] = {
-                    departmentName : {}
-                    
-                }
+                groupedData["region"][regionName] = { "department": {} };
             }
 
             if (!groupedData["region"][regionName]["department"][departmentName]) {
-                groupedData["region"][regionName]["department"][departmentName] = {
-                    "city" : {}
-                };
-
-            if()
-            
-            } else {
-                groupedData[departmentName][cityName].airportsList.push(airport)
-                groupedData[departmentName][cityName].count += 1;
-                };
+                groupedData["region"][regionName]["department"][departmentName] = { "city": {} };
             }
+
+            if (!groupedData["region"][regionName]["department"][departmentName]["city"][cityName]) {
+                groupedData["region"][regionName]["department"][departmentName]["city"][cityName] = { "type": {} };
+            }
+
+            if (!groupedData["region"][regionName]["department"][departmentName]["city"][cityName]["type"][airportType]) {
+                groupedData["region"][regionName]["department"][departmentName]["city"][cityName]["type"][airportType] = 0;
+            }
+
+            groupedData["region"][regionName]["department"][departmentName]["city"][cityName]["type"][airportType] += 1;
+        }
+
         return groupedData;
-            
     } catch (error) {
-        throw new Error('Error grouping airports by department and city: ' + error.message);
+        throw new Error('Error grouping airports by region, department, city, and type: ' + error.message);
     }
-}
+};
