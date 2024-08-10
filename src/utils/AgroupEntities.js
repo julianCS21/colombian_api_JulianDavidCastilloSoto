@@ -3,20 +3,20 @@ import { getAirports, getDepartmentById, getPresidents, getRegionById, getTouris
 export const groupPresidentsByPoliticalParty =  async () =>{
     try{
         const presidents = await getPresidents();
-        const presidentsGroupByPoliticalParty = presidents.reduce((presidentsObject,president) =>{
-            if(!presidentsObject[president.politicalParty]){
-                presidentsObject[president.politicalParty] = {
-                    presidents: [],
+
+        const groupedData = {}
+
+        for(const president of presidents){
+            if(!groupedData[president.politicalParty]){
+                groupedData[president.politicalParty] = {
+                    presidentsList : [],
                     count : 0
-                    
                 }
             }
-            presidentsObject[president.politicalParty].push(president);
-            presidentsObject[president.politicalParty].count += 1;
-            return presidentsObject;
-        },{})
-
-        const sortedParties = Object.entries(presidentsGroupByPoliticalParty)
+            groupedData[president.politicalParty].presidentsList.push(president);
+            groupedData[president.politicalParty].count += 1;
+        }
+        const sortedParties = Object.entries(groupedData)
             .map(([politicalParty, {presidents,count}]) => ({ politicalParty, presidents,count }))
             .sort((a, b) => b.count - a.count);
         
@@ -24,7 +24,7 @@ export const groupPresidentsByPoliticalParty =  async () =>{
 
     }
     catch(error){
-        throw new error('error agrouping presidents by political party' + error.message)
+        throw new Error('error agrouping presidents by political party' + error.message)
     }
 } 
 
@@ -79,7 +79,7 @@ export const groupAirportsByDepartmentsAndCities = async () => {
             if (!groupedData[departmentName][cityName]) {
                 groupedData[departmentName][cityName] = {
                     airportsList: [airport],
-                    count : 0
+                    count : 1
                 };
             } else {
                 groupedData[departmentName][cityName].airportsList.push(airport)
