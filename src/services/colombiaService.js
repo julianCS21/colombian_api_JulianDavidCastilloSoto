@@ -63,3 +63,52 @@ export const getAirports = async () => {
         return null;
     }
 }
+
+/**
+ * Return the name of a department from the Colombia API
+ * 
+ * @async
+ * @function getDepartmentById
+ * @param {string|number} id - The ID of the department to fetch.
+ * @returns {Promise<string|null>} Return the name of the department if the response is successful, otherwise return null.
+ * @throws {Error} Throws an error if the response is unsuccessful.
+ */
+export const getDepartmentById = async (id) => {
+    try {
+        const response = await fetch(`https://api-colombia.com/api/v1/Department/${id}`);
+        if (!response.ok) {
+            throw new Error('Error fetching department');
+        }
+        const department = await response.json();
+        return department.name;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+
+/**
+ * Return the name of a department from the Colombia API
+ * 
+ * @async
+ * @function getDepartmentById
+ * @param {string|number} id - The ID of the Region to fetch.
+ * @returns {Promise<string|null>} Return the name of the region if the response is successful, otherwise return null.
+ * @throws {Error} Throws an error if the response is unsuccessful.
+ */
+export const getRegionById = async (id) => {
+    try {
+        const response = await fetch(`https://api-colombia.com/api/v1/Region/${id}`);
+        if (!response.ok) {
+            throw new Error('Error fetching department');
+        }
+        const department = await response.json();
+        return department.name;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+
