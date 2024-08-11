@@ -60,7 +60,7 @@ const AirportsTemplate = ({ isSelected }) => {
                     checked={filter}
                     onChange={handleFilterChange}
                 />
-                <span style={{fontFamily:'system-ui'}}> Group by Departments and Cities </span>
+                <span style={{fontFamily:'system-ui'}}> Group by departments and cities </span>
             </div>
 
             <div>
@@ -69,7 +69,7 @@ const AirportsTemplate = ({ isSelected }) => {
                     checked={showStructuredData}
                     onChange={handleStructuredDataToggle}
                 />
-                <span style={{fontFamily:'system-ui'}}> Show Structured Data as JSON </span>
+                <span style={{fontFamily:'system-ui'}}> Show structured data as JSON </span>
             </div>
 
             {filter ? (
