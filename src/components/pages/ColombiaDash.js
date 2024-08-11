@@ -10,6 +10,7 @@ const ColombiaDash = () =>{
 
     return <div>
         <TabsComponent selected={selected} isSelected={handleSelect}></TabsComponent>
+        
 
     </div>
 }
