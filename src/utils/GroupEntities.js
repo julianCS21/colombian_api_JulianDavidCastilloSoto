@@ -17,7 +17,7 @@ export const groupPresidentsByPoliticalParty =  async () =>{
             groupedData[president.politicalParty].count += 1;
         }
         const sortedParties = Object.entries(groupedData)
-            .map(([politicalParty, {presidents,count}]) => ({ politicalParty, presidents,count }))
+            .map(([politicalParty, {presidentsList,count}]) => ({ politicalParty, presidentsList,count }))
             .sort((a, b) => b.count - a.count);
         
         return sortedParties;
