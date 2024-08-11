@@ -1,0 +1,14 @@
+.tab{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: 2px solid whitesmoke ;
+}
+  
+.tab.selected {
+    border-bottom: 2px solid var(--hoverColor);
+
+}
+  

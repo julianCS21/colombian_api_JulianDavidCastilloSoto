@@ -1,12 +1,15 @@
 import './App.css';
-import Card from './components/Card';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ColombiaDash from './components/pages/ColombiaDash';
 
 function App() {
   return (
-    <div>
-      <p>HOLAAs</p>
-      <Card></Card>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="colombia_dash" element={<ColombiaDash />}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

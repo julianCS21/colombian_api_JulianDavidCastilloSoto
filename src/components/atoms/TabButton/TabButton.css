@@ -1,0 +1,17 @@
+.tab-button {
+    color: black;
+    cursor: pointer;
+    font-family: system-ui;
+
+  }
+
+  .tab-button:hover{
+    color: var(--hoverColor);
+  }
+  
+  .tab-button.selected {
+    color: var(--hoverColor);
+  }
+  
+
+  
