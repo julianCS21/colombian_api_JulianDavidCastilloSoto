@@ -1,11 +1,4 @@
-/**
- * return a list of presidents from the colombia API.
- * 
- * @async
- * @function getPresidents
- * @returns {Promise<Object[]|null>} Return a array of presidents if the response is successful, otherwise return null.
- * @throws {Error} throw an error if the response is unsuccessful.
- */
+
 export const getPresidents = async () => {
     try {
         const response = await fetch('https://api-colombia.com/api/v1/President');
@@ -20,14 +13,6 @@ export const getPresidents = async () => {
     }
 }
 
-/**
- * return a list of touristic attractions from the colombia API
- * 
- * @async
- * @function getTouristicAttractions
- * @returns {Promise<Object[]|null>} Return a array of touristic attractions  if the response is successful, otherwise return null.
- * @throws {Error} throw an error if the response is unsuccessful.
- */
 export const getTouristicAttractions = async () => {
     try {
         const response = await fetch('https://api-colombia.com/api/v1/TouristicAttraction');
@@ -42,14 +27,7 @@ export const getTouristicAttractions = async () => {
     }
 }
 
-/**
- * return a list of airports from the colombia API
- * 
- * @async
- * @function getTouristicAttractions
- * @returns {Promise<Object[]|null>} Return a array of airports if the response is successful, otherwise return null.
- * @throws {Error} throw an error if the response is unsuccessful.
- */
+
 export const getAirports = async () => {
     try {
         const response = await fetch('https://api-colombia.com/api/v1/Airport');
@@ -64,15 +42,7 @@ export const getAirports = async () => {
     }
 }
 
-/**
- * Return the name of a department from the Colombia API
- * 
- * @async
- * @function getDepartmentById
- * @param {string|number} id - The ID of the department to fetch.
- * @returns {Promise<string|null>} Return the name of the department if the response is successful, otherwise return null.
- * @throws {Error} Throws an error if the response is unsuccessful.
- */
+
 export const getDepartmentById = async (id) => {
     try {
         const response = await fetch(`https://api-colombia.com/api/v1/Department/${id}`);
@@ -88,15 +58,7 @@ export const getDepartmentById = async (id) => {
 }
 
 
-/**
- * Return the name of a department from the Colombia API
- * 
- * @async
- * @function getDepartmentById
- * @param {string|number} id - The ID of the Region to fetch.
- * @returns {Promise<string|null>} Return the name of the region if the response is successful, otherwise return null.
- * @throws {Error} Throws an error if the response is unsuccessful.
- */
+
 export const getRegionById = async (id) => {
     try {
         const response = await fetch(`https://api-colombia.com/api/v1/Region/${id}`);
