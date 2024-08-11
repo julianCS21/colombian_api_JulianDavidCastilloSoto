@@ -60,7 +60,7 @@ const AirportsTemplate = ({ isSelected }) => {
                     checked={filter}
                     onChange={handleFilterChange}
                 />
-                Group by Departments and Cities
+                <span style={{fontFamily:'system-ui'}}> Group by Departments and Cities </span>
             </div>
 
             <div>
@@ -69,7 +69,7 @@ const AirportsTemplate = ({ isSelected }) => {
                     checked={showStructuredData}
                     onChange={handleStructuredDataToggle}
                 />
-                Show Structured Data as JSON
+                <span style={{fontFamily:'system-ui'}}> Show Structured Data as JSON </span>
             </div>
 
             {filter ? (
@@ -79,7 +79,7 @@ const AirportsTemplate = ({ isSelected }) => {
             ) : (
                 <div>
                     <Size entity={"Airports"} size={airports.length}></Size>
-                    <CardsContainer dataList={airports} color={"blue"} selected={1} />
+                    <CardsContainer dataList={airports} color={"white"} selected={1} />
                     <Time entity={"Airports"} time={time}></Time>
                 </div>
                 

@@ -44,14 +44,14 @@ const TouristicAttractionsTemplate = ({ isSelected }) => {
                     checked={filter} 
                     onChange={handleFilterChange} 
                 />
-                Group by departments and cities
+                <span style={{fontFamily:'system-ui'}}>Group by departments and cities</span>
             </label>
             {filter ? (
                 <TouristicAttractionsGroupedByDepartmentAndCity groupedData={groupedData} />
             ) : (
                 <div>
                     <Size entity={"Touristic Attractions"} size={data.length}></Size>
-                    <CardsContainer dataList={data} color={"red"} selected={2} />
+                    <CardsContainer dataList={data} color={"white"} selected={2} />
                     <Time entity={"Touristic Attractions"} time={time}></Time>
                 </div>
             )}

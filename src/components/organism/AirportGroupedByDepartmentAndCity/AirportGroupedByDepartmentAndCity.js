@@ -9,14 +9,14 @@ const AirportsGroupedByDepartmentAndCity = ({groupedData}) => {
                 const cityObject = groupedData[departmentName];
                 return (
                     <div key={departmentName} className="department">
-                        <h2>{departmentName}</h2>
+                        <h2 style={{fontFamily:'system-ui'}}>{departmentName}</h2>
                         {Object.keys(cityObject).map(cityName => {
                             const airportsList = cityObject[cityName].airportsList;
 
                             return (
                                 <div key={cityName} className="city">
-                                    <h3>{cityName}</h3>
-                                    <CardsContainer dataList={airportsList} color={"blue"} selected={1} />
+                                    <h3 style={{fontFamily:'system-ui'}}>{cityName}</h3>
+                                    <CardsContainer dataList={airportsList} color={"white"} selected={1} />
                                 </div>
                             );
                         })}

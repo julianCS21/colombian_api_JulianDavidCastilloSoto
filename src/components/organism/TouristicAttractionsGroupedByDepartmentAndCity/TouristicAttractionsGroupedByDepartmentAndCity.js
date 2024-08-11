@@ -9,16 +9,16 @@ const TouristicAttractionsGroupedByDepartmentAndCity = ({ groupedData }) => {
 
                 return (
                     <div key={departmentName} className="department">
-                        <h2>{departmentName}</h2>
+                        <h2 style={{fontFamily:'system-ui'}}>{departmentName}</h2>
                         {Object.keys(cityObject).map(cityName => {
                             const attractions = cityObject[cityName].touristicAttractionNames;
 
                             return (
                                 <div key={cityName} className="city">
-                                    <h3>{cityName}</h3>
+                                    <h3 style={{fontFamily:'system-ui'}}>{cityName}</h3>
                                     <CardsContainer 
                                         dataList={attractions} 
-                                        color={"red"} 
+                                        color={"white"} 
                                         selected={2} 
                                     />
                                 </div>

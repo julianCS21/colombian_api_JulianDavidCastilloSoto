@@ -44,7 +44,7 @@ const PresidentsTemplate = ({ isSelected }) => {
                     onClick={handleFilterChange}
                     checked={filter}
                 />
-                Group by political party
+                <span style={{fontFamily:'system-ui'}}>Group by political party</span>
             </label>
 
             {filter ? (
@@ -52,7 +52,7 @@ const PresidentsTemplate = ({ isSelected }) => {
             ) : (
                 <div>
                     <Size entity={"Presidents"} size={data.length}></Size>
-                    <CardsContainer dataList={data} color={"yellow"} selected={0} />
+                    <CardsContainer dataList={data} color={"white"} selected={0} />
                     <Time entity={"Presidents"} time={time}></Time>
                 </div>
             )}

@@ -1,6 +1,6 @@
 const Size = ({entity,size}) =>{
     return <>
-        <h1 className="size"> this {entity} have {size} elements</h1>
+        <h1 style={{fontFamily:'system-ui'}}> the {entity} entity have {size} elements</h1>
     
     </>
 
