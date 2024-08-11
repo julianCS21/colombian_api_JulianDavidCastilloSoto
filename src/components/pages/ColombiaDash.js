@@ -2,7 +2,7 @@ import { useState } from "react";
 import TabsComponent from "../organism/TabsComponent/TabsComponent";
 import PresidentsTemplate from "../template/PresidentsTemplate/PresidentsTemplate";
 import AirportsTemplate from "../template/AirportsTemplate/AirportsTemplate";
-import TouristicAttractionsTemplate from "../template/TouristicAtractions/TouristicAttractionsTemplate";
+import TouristicAttractionsTemplate from "../template/TouristicAttractionsTemplate/TouristicAttractionsTemplate";
 
 const ColombiaDash = () =>{
 

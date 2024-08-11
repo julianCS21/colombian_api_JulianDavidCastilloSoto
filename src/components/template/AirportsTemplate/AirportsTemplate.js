@@ -5,6 +5,8 @@ import CardsContainer from '../../organism/CardsContainer/CardsContainer';
 import AirportGroupedByDepartmentAndCity from '../../organism/AirportGroupedByDepartmentAndCity/AirportGroupedByDepartmentAndCity';
 import AirportStructureData from '../../organism/AirportStructureData/AirportStructureData';
 import { groupAirportsByRegionAndDepartmentsAndCitiesAndType } from '../../../utils/GroupEntities';
+import Size from '../../atoms/Size/Size';
+import Time from '../../atoms/Time/Time';
 
 const AirportsTemplate = ({ isSelected }) => {
     const [airports, setAirports] = useState([]);
@@ -12,12 +14,15 @@ const AirportsTemplate = ({ isSelected }) => {
     const [dataStructured, setDataStructured] = useState([]);
     const [filter, setFilter] = useState(false);
     const [showStructuredData, setShowStructuredData] = useState(false);
+    const [time,setTime] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: airportsData } = await fetchAirports();
+                const { data: airportsData, elapsedTime:time } = await fetchAirports();
                 setAirports(airportsData);
+                setTime(time);
+
 
                 const groupedData = await groupAirportsByDepartmentsAndCities();
                 setData(groupedData);
@@ -72,7 +77,12 @@ const AirportsTemplate = ({ isSelected }) => {
             ) : showStructuredData ? (
                 <AirportStructureData dataStructured={dataStructured} />
             ) : (
-                <CardsContainer dataList={airports} color={"blue"} selected={1} />
+                <div>
+                    <Size entity={"Airports"} size={airports.length}></Size>
+                    <CardsContainer dataList={airports} color={"blue"} selected={1} />
+                    <Time entity={"Airports"} time={time}></Time>
+                </div>
+                
             )}
         </div>
     );

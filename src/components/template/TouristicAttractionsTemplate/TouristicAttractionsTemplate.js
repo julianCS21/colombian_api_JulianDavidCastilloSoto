@@ -3,18 +3,21 @@ import { fetchTouristicAttractions } from '../../../utils/GetEntities';
 import CardsContainer from '../../organism/CardsContainer/CardsContainer';
 import TouristicAttractionsGroupedByDepartmentAndCity from '../../organism/TouristicAttractionsGroupedByDepartmentAndCity/TouristicAttractionsGroupedByDepartmentAndCity';
 import { groupTouristicAttractionsByDepartmentsAndCities } from '../../../utils/GroupEntities';
+import Size from '../../atoms/Size/Size';
+import Time from '../../atoms/Time/Time';
 
 const TouristicAttractionsTemplate = ({ isSelected }) => {
     const [data, setData] = useState([]);
     const [groupedData, setGroupedData] = useState([]);
     const [filter, setFilter] = useState(false);
+    const [time,setTime] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: attractionsData } = await fetchTouristicAttractions();
+                const { data: attractionsData, elapsedTime:time } = await fetchTouristicAttractions();
                 setData(attractionsData);
-                
+                setTime(time);          
                 const groupedAttractions = await groupTouristicAttractionsByDepartmentsAndCities();
                 setGroupedData(groupedAttractions);
             } catch (error) {
@@ -46,11 +49,11 @@ const TouristicAttractionsTemplate = ({ isSelected }) => {
             {filter ? (
                 <TouristicAttractionsGroupedByDepartmentAndCity groupedData={groupedData} />
             ) : (
-                <CardsContainer 
-                    dataList={data} 
-                    color={"red"} 
-                    selected={2} 
-                />
+                <div>
+                    <Size entity={"Touristic Attractions"} size={data.length}></Size>
+                    <CardsContainer dataList={data} color={"red"} selected={2} />
+                    <Time entity={"Touristic Attractions"} time={time}></Time>
+                </div>
             )}
         </div>
     );
