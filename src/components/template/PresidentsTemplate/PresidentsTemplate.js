@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { groupPresidentsByPoliticalParty } from '../../../utils/GroupEntities';
 import CardsContainer from '../../organism/CardsContainer/CardsContainer';
+import PresidentsGroupedByPoliticalParty from '../../organism/PresidentsGroupedByPoliticalParty/PresidentsGroupedByPoliticalParty';
 import { fetchPresidents } from '../../../utils/GetEntities';
 
 const PresidentsTemplate = ({ isSelected }) => {
@@ -27,31 +28,23 @@ const PresidentsTemplate = ({ isSelected }) => {
         display: isSelected ? 'block' : 'none'
     };
 
-    const HandlerFilter = () => {
+    const handleFilterChange = () => {
         setFilter(!filter);
     };
-
-
-
 
     return (
         <div className='presidents-template' style={containerStyle}>
             <label>
                 <input 
                     type='checkbox' 
-                    onClick={HandlerFilter}
+                    onClick={handleFilterChange}
                     checked={filter}
                 />
                 Group by political party
             </label>
 
             {filter ? (
-                sortedData.map((info, index) => (
-                    <div key={index}>
-                        <span>Political Party: {info.politicalParty}</span>
-                        <CardsContainer dataList={info.presidentsList} color={"yellow"} selected={0} />
-                    </div>
-                ))
+                <PresidentsGroupedByPoliticalParty sortedData={sortedData} />
             ) : (
                 <CardsContainer dataList={data} color={"yellow"} selected={0} />
             )}

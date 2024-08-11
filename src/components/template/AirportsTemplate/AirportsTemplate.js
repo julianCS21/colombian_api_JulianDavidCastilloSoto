@@ -2,25 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { fetchAirports } from '../../../utils/GetEntities';
 import { groupAirportsByDepartmentsAndCities } from '../../../utils/GroupEntities';
 import CardsContainer from '../../organism/CardsContainer/CardsContainer';
+import AirportGroupedByDepartmentAndCity from '../../organism/AirportGroupedByDepartmentAndCity/AirportGroupedByDepartmentAndCity';
+import AirportStructureData from '../../organism/AirportStructureData/AirportStructureData';
+import { groupAirportsByRegionAndDepartmentsAndCitiesAndType } from '../../../utils/GroupEntities';
 
 const AirportsTemplate = ({ isSelected }) => {
     const [airports, setAirports] = useState([]);
     const [data, setData] = useState([]);
     const [dataStructured, setDataStructured] = useState([]);
     const [filter, setFilter] = useState(false);
+    const [showStructuredData, setShowStructuredData] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: airportsData, elapsedTime } = await fetchAirports();
+                const { data: airportsData } = await fetchAirports();
                 setAirports(airportsData);
-                
+
                 const groupedData = await groupAirportsByDepartmentsAndCities();
                 setData(groupedData);
-                
-                // Future use for dataStructured
-                // const groupedDataByManyOptions = await groupAirportsByRegionAndDepartmentsAndCitiesAndType();
-                // setDataStructured(groupedDataByManyOptions);
+
+                const structuredData = await groupAirportsByRegionAndDepartmentsAndCitiesAndType(); 
+                setDataStructured(structuredData);
                 
             } catch (error) {
                 console.error('Error fetching and grouping data:', error.message);
@@ -32,6 +35,12 @@ const AirportsTemplate = ({ isSelected }) => {
 
     const handleFilterChange = () => {
         setFilter(!filter);
+        setShowStructuredData(false);
+    };
+
+    const handleStructuredDataToggle = () => {
+        setShowStructuredData(!showStructuredData);
+        setFilter(false);
     };
 
     const containerStyle = {
@@ -40,33 +49,28 @@ const AirportsTemplate = ({ isSelected }) => {
 
     return (
         <div className='airports-template' style={containerStyle}>
-            <input
-                type='checkbox'
-                checked={filter}
-                onChange={handleFilterChange}
-            />
-            Group by Departments and Cities
+            <div>
+                <input
+                    type='checkbox'
+                    checked={filter}
+                    onChange={handleFilterChange}
+                />
+                Group by Departments and Cities
+            </div>
+
+            <div>
+                <input
+                    type='checkbox'
+                    checked={showStructuredData}
+                    onChange={handleStructuredDataToggle}
+                />
+                Show Structured Data as JSON
+            </div>
 
             {filter ? (
-                Object.keys(data).map(departmentName => {
-                    const cityObject = data[departmentName];
-                    
-                    return (
-                        <div key={departmentName} className="department">
-                            <h2>{departmentName}</h2>
-                            {Object.keys(cityObject).map(cityName => {
-                                const airportsList = cityObject[cityName].airportsList;
-
-                                return (
-                                    <div key={cityName} className="city">
-                                        <h3>{cityName}</h3>
-                                        <CardsContainer dataList={airportsList} color={"blue"} selected={1} />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    );
-                })
+                <AirportGroupedByDepartmentAndCity groupedData={data} />
+            ) : showStructuredData ? (
+                <AirportStructureData dataStructured={dataStructured} />
             ) : (
                 <CardsContainer dataList={airports} color={"blue"} selected={1} />
             )}

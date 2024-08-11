@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTouristicAttractions } from '../../../utils/GetEntities';
 import CardsContainer from '../../organism/CardsContainer/CardsContainer';
+import TouristicAttractionsGroupedByDepartmentAndCity from '../../organism/TouristicAttractionsGroupedByDepartmentAndCity/TouristicAttractionsGroupedByDepartmentAndCity';
 import { groupTouristicAttractionsByDepartmentsAndCities } from '../../../utils/GroupEntities';
 
 const TouristicAttractionsTemplate = ({ isSelected }) => {
@@ -16,8 +17,6 @@ const TouristicAttractionsTemplate = ({ isSelected }) => {
                 
                 const groupedAttractions = await groupTouristicAttractionsByDepartmentsAndCities();
                 setGroupedData(groupedAttractions);
-                
-
             } catch (error) {
                 console.error('Error fetching and grouping data:', error.message);
             }
@@ -45,29 +44,7 @@ const TouristicAttractionsTemplate = ({ isSelected }) => {
                 Group by departments and cities
             </label>
             {filter ? (
-                Object.keys(groupedData).map(departmentName => {
-                    const cityObject = groupedData[departmentName];
-                    
-                    return (
-                        <div key={departmentName} className="department">
-                            <h2>{departmentName}</h2>
-                            {Object.keys(cityObject).map(cityName => {
-                                const attractions = cityObject[cityName].touristicAttractionNames;
-
-                                return (
-                                    <div key={cityName} className="city">
-                                        <h3>{cityName}</h3>
-                                        <CardsContainer 
-                                            dataList={attractions} 
-                                            color={"red"} 
-                                            selected={2} 
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    );
-                })
+                <TouristicAttractionsGroupedByDepartmentAndCity groupedData={groupedData} />
             ) : (
                 <CardsContainer 
                     dataList={data} 
