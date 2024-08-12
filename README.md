@@ -19,7 +19,7 @@ Para ejecutar este proyecto, necesitas tener instalados los siguientes elementos
 Clona el repositorio:
 
 ```sh
-git clone https://github.com/julianCS21/colombian_api.git
+git clone https://github.com/julianCS21/colombian_api_JulianDavidCastilloSoto.git
 ```
 
 Accede al directorio del proyecto y ejecuta el siguiente comando para instalar las dependencias:
