@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Colombian API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+El proyecto **Colombian API** proporciona servicios web para acceder a información sobre Colombia. Este proyecto utiliza Docker para contenerizar la aplicación, asegurando una implementación consistente y portátil en cualquier entorno. Sin embargo, Docker es opcional y puedes ejecutar la aplicación localmente utilizando Node.js.
 
-In the project directory, you can run:
+Para el desarrollo de la interfaz, se ha utilizado **React** como framework principal, junto con **JavaScript** para la lógica del lado del cliente. 
+## Prerequisitos
 
-### `npm start`
+Para ejecutar este proyecto, necesitas tener instalados los siguientes elementos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Node.js**: Entorno de ejecución para JavaScript en el servidor.
+- **Docker** (opcional): Para construir y ejecutar contenedores.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Instalación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Clona el repositorio:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+git clone https://github.com/julianCS21/colombian_api.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Accede al directorio del proyecto y ejecuta el siguiente comando para instalar las dependencias:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+cd colombian_api
+npm install
+```
+Para ejecutar la aplicación localmente, usa el siguiente comando:
+```sh
+npm start
+```
 
-### `npm run eject`
+y accedes a la siguiente URL
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+http://localhost:3000/colombia_dash
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Construcción de la imagen Docker y del contenedor (Opcional)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Para construir la imagen Docker del proyecto, usa el siguiente comando:
+```sh
+docker build -t juliancs21/colombian_api_juliandavidcastillosoto:latest .
+```
 
-## Learn More
+Para ejecutar un contenedor basado en la imagen construida, utiliza el siguiente comando:
+```sh
+docker run -d -p 3000:3000 juliancs21/colombian_api_juliandavidcastillosoto:latest
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+y accedes a la siguiente URL
+```sh
+http://localhost:3000/colombia_dash
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+###  Ejecución del Contenedor Docker desde Docker Hub (Opcional)
 
-### Analyzing the Bundle Size
+puedes ejecutar el contenedor directamente utilizando el siguiente comando:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+docker run -d -p 3000:3000 juliancs21/colombian_api_juliandavidcastillosoto:latest
+```
 
-### Making a Progressive Web App
+y accedes a la siguiente URL
+```sh
+http://localhost:3000/colombia_dash
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Arquitectura del Proyecto
 
-### Advanced Configuration
+La aplicación sigue una arquitectura frontend basada en Atomic Design, que organiza los componentes en niveles jerárquicos como átomos, moléculas, organismos, plantillas y páginas. Esto facilita el mantenimiento y la escalabilidad del proyecto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+La separación de responsabilidades se gestiona mediante una estructura modular, asegurando que cada componente y función tenga una responsabilidad clara y específica.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Tecnologías Utilizadas
 
-### `npm run build` fails to minify
+* Node.js: Entorno de ejecución para JavaScript.
+* Docker: Plataforma para desarrollar, enviar y ejecutar aplicaciones en contenedores.
+* React: Framework para construir interfaces de usuario.
+* JavaScript: Lenguaje de programación para la lógica del lado del cliente.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Autor
+* **[Julián David Castillo Soto](https://www.linkedin.com/in/julián-david-castillo-soto-118856216/)**  - [julianCS21](https://github.com/julianCS21)
+
+## Licencia
+**©** Julián David Castillo Soto,  Ingeniero de Sistemas de la Universidad Escuela Colombiana de Ingeniería Julio Garavito.
