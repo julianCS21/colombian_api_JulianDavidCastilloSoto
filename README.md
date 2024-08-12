@@ -25,7 +25,7 @@ git clone https://github.com/julianCS21/colombian_api_JulianDavidCastilloSoto.gi
 Accede al directorio del proyecto y ejecuta el siguiente comando para instalar las dependencias:
 
 ```sh
-cd colombian_api
+cd  colombian_api_JulianDavidCastilloSoto
 npm install
 ```
 Para ejecutar la aplicación localmente, usa el siguiente comando:
