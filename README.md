@@ -40,6 +40,8 @@ http://localhost:3000/colombia_dash
 ```
 
 
+
+
 ### Construcción de la imagen Docker y del contenedor (Opcional)
 
 Para construir la imagen Docker del proyecto, usa el siguiente comando:
@@ -71,6 +73,37 @@ y accedes a la siguiente URL
 ```sh
 http://localhost:3000/colombia_dash
 ```
+
+Una vez dentro podras acceder a :
+
+## Entidad presidentes
+
+![image](https://github.com/user-attachments/assets/86b04c6d-fc41-454c-a254-e2b41264122f)
+
+## Entidad presidentes agrupada por partidos politicos
+
+![image](https://github.com/user-attachments/assets/8b78aabf-424f-40cb-afb2-e7f17fe5564c)
+
+## Entidad aereopuertos
+
+![image](https://github.com/user-attachments/assets/8beac405-f4c0-442e-8995-88d829ff40f2)
+
+## Entidad aereopuertos agrupada por ciudad y departamento
+
+![image](https://github.com/user-attachments/assets/5fd725e0-7b20-4122-96b2-d5e087dcf36a)
+
+
+## Estructura compleja de la entidad de aereopuertos agrupada por region, departamento, ciudad y tipo
+
+![image](https://github.com/user-attachments/assets/a4bcb63b-dcaf-4406-bc97-5831601d4cc2)
+
+## Entidad atracciones turisticas
+
+![image](https://github.com/user-attachments/assets/e6c7d6b7-d7f3-4280-8414-5ea130afb937)
+
+## Entidad atracciones turisticas agrupadas por ciudad y departamento:
+
+![image](https://github.com/user-attachments/assets/1bc81efc-50f9-453b-a298-0b4af21efecd)
 
 ## Arquitectura del Proyecto
 
